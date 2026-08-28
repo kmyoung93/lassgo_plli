@@ -133,7 +133,7 @@ html,body{
   padding-right:29%;
   text-align:center;
   font-weight:800;
-  font-size:clamp(13px, 1.6vw, 20px);
+  font-size:clamp(20px, 1.6vw, 20px);
   color:var(--ink);
   font-family:var(--font-title);
 }
@@ -545,7 +545,7 @@ html,body{
     margin-top:6px;
     justify-content:center;
   }
-  .p1-button-text{ padding-left:14%; padding-right:28%; }
+  .p1-button-text{ padding-left:19%; padding-right:28%; }
   .p1-characters{ position:static; width:100%; max-width:420px; margin-top:auto; }
 
   /* ----- PAGE 8: 세로 스택으로 전환 ----- */
@@ -574,7 +574,7 @@ html,body{
 
   /* ----- 팝업 ----- */
   .popup-box{ width:92%; }
-  .popup-answer-text{ font-size:14px; }
+  .popup-answer-text{ font-size:15px; }
 }
 
 @media (max-width:360px){
