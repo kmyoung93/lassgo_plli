@@ -515,7 +515,7 @@ html,body{
   .back-btn{ padding:7px 14px; font-size:13px; border-radius:11px; }
   .blank-box{ width:100px; height:32px; margin:2px 4px; }
   .quiz-head h1{ font-size:15px; line-height:1.4; word-break:keep-all; overflow-wrap:break-word; }
-  .quiz-wrap{ padding-top:6px; overflow-x:hidden; }
+  .quiz-wrap{ padding-top:14px; overflow-x:hidden; }
 
   /* ----- PAGE 1: 가로형 배너 → 세로 스택으로 전환 ----- */
   .p1-inner{
