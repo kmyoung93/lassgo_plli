@@ -11,13 +11,18 @@
 }
 
 /* 본문 글꼴 (Mona — 한글은 Mona12 Text KR 서브셋 사용) */
-@import url('https://cdn.jsdelivr.net/gh/MonadABXY/mona-font/web/mona.css');
+@font-face {
+    font-family: 'Rimgul';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-4@1.1/Limgul12.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
 
 :root{
   /* 제목/버튼/점수 등 포인트 텍스트 */
   --font-title: 'NeoDonggeunmo', 'Malgun Gothic', sans-serif;
   /* 본문/입력창/설명 텍스트 (한글 지원 서브셋) */
-  --font-body: 'Mona12 Text KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  --font-body: 'Rimgul', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
 
   /* 하위 호환용 (예전 이름) */
   --font-primary: var(--font-body);
