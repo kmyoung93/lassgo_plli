@@ -55,6 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   checkBtn.style.backgroundImage = `url('${QUIZ_DATA.checkButtonImage}')`;
 
+  /* ---------- 모달 이미지 미리 로딩 (팝업 열릴 때 이미지가 늦게 뜨는 현상 방지) ---------- */
+const modalImageLoaded = {};
+QUIZ_DATA.questions.forEach((q) => {
+  if(q.modalImage){
+    modalImageLoaded[q.modalImage] = false;
+    const preload = new Image();
+    preload.onload = () => { modalImageLoaded[q.modalImage] = true; };
+    preload.onerror = () => { modalImageLoaded[q.modalImage] = true; }; // 로드 실패해도 대기가 무한히 걸리지 않도록
+    preload.src = q.modalImage;
+  }
+});
+
   bgm.src = QUIZ_DATA.bgmSrc;
   bgm.volume = QUIZ_DATA.bgmVolume ?? 0.3;
   bgm.loop = true;
@@ -153,14 +165,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- 이벤트: 정답 확인 → 모달 팝업 (문항별 이미지 적용) ---------- */
-  checkBtn.addEventListener('click', () => {
-    const q = QUIZ_DATA.questions[currentIndex];
-    userAnswers[currentIndex] = answerInput.value;
+  function openAnswerPopup(){
+  const q = QUIZ_DATA.questions[currentIndex];
+  popupBox.style.backgroundImage = `url('${q.modalImage}')`;
+  popupAnswerText.innerHTML = q.correctAnswer;
+  popupOverlay.classList.add('show');
+}
 
-    popupBox.style.backgroundImage = `url('${q.modalImage}')`;
-    popupAnswerText.innerHTML = q.correctAnswer;
-    popupOverlay.classList.add('show');
-  });
+checkBtn.addEventListener('click', () => {
+  const q = QUIZ_DATA.questions[currentIndex];
+  userAnswers[currentIndex] = answerInput.value;
+
+  if(q.modalImage && !modalImageLoaded[q.modalImage]){
+    const start = Date.now();
+    const waitLoop = setInterval(() => {
+      if(modalImageLoaded[q.modalImage] || Date.now() - start > 1500){
+        clearInterval(waitLoop);
+        openAnswerPopup();
+      }
+    }, 30);
+  } else {
+    openAnswerPopup();
+  }
+});
 
   /* ---------- 팝업 안의 "다음 문제" 클릭 영역 ---------- */
   popupNextHit.addEventListener('click', () => {
