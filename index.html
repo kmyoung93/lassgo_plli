@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제 1회 플리고사</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="stylesheet" href="css/fonts.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+<!-- BGM (사용자가 audio/bgm.mp3 업로드) -->
+<audio id="bgm" preload="auto"></audio>
+<div class="top-toolbar">
+  <button class="back-btn" id="backBtn" aria-label="이전 문제로 이동">← 뒤로</button>
+  <button class="bgm-toggle" id="bgmToggle" data-on="false" aria-label="배경음악 켜기/끄기">MUSIC OFF</button>
+</div>
+
+<div class="stage">
+
+  <!-- PAGE 1: 인트로 -->
+  <section id="page1" class="page active">
+    <div class="p1-inner">
+      <img class="p1-logo" id="p1Logo" src="" alt="2026 PLAVE WORLD TOUR KEEP IT MANIC">
+      <img class="p1-hearts" id="p1Hearts" src="" alt="">
+      <h2 class="p1-title-small" id="p1TitleSmall"></h2>
+      <h1 class="p1-title-big" id="p1TitleBig"></h1>
+      <button class="p1-button" id="enterBtn" aria-label="접속하기">
+        <span class="p1-button-text">LASSGO</span>
+      </button>
+      <img class="p1-characters" id="p1Characters" src="" alt="">
+    </div>
+  </section>
+
+  <!-- QUIZ STAGE: 2~7페이지 공용 템플릿 (data.js 기반으로 내용이 바뀜) -->
+  <section id="quizStage" class="page">
+    <div class="quiz-wrap">
+      <div class="quiz-head">
+        <img class="quiz-icon" id="quizIcon" src="" alt="">
+        <h1>네모 안에 들어갈 응원법으로 적절한 것을 쓰시오</h1>
+      </div>
+
+      <div class="quiz-card" id="quizCard"></div>
+
+      <div class="answer-row">
+        <input type="text" class="answer-input" id="answerInput" placeholder="정답을 입력하세요 (빈칸이 여러 개면 띄어쓰기로 구분)">
+        <button class="check-btn" id="checkBtn">
+          <span class="check-btn-text">정답 확인</span>
+        </button>
+      </div>
+      <div class="progress" id="progress">1 / 6</div>
+    </div>
+  </section>
+
+  <!-- PAGE 8: 결과 -->
+  <section id="page8" class="page">
+    <div class="p8-inner">
+      <img class="p8-animals" id="p8Animals" src="" alt="">
+      <h2 class="p8-title-small" id="p8TitleSmall"></h2>
+      <h1 class="p8-title-big" id="p8TitleBig"></h1>
+      <p class="p8-subtitle" id="p8Subtitle"></p>
+
+      <div class="p8-scorebox" id="p8ScoreBox">
+        <div class="p8-score-inner">
+          <span class="p8-score-num" id="resultScore">0</span><span class="p8-score-unit">점</span>
+        </div>
+      </div>
+
+      <img class="p8-characters" id="p8Characters" src="" alt="">
+      <button class="restart-hit" id="restartBtn" aria-label="처음부터 다시하기"></button>
+    </div>
+  </section>
+
+</div>
+
+<!-- 정답 팝업: 문항별 modalImage 배경 위에 정답 텍스트 + "다음 문제" 클릭 영역 오버레이 -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box" id="popupBox">
+    <p class="popup-answer-text" id="popupAnswerText"></p>
+    <button class="popup-next-hit" id="popupNextHit" aria-label="다음 문제로 이동">
+      <span class="popup-next-text">아주그냥라쓰고</span>
+    </button>
+  </div>
+</div>
+
+<script src="js/data.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
+</body>
+</html>
